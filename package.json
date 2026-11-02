@@ -1,0 +1,48 @@
+{
+  "name": "electrical-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "prisma:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "tsx prisma/seed.ts",
+    "test": "tsc -p tsconfig.test.json && node scripts/run-tests.cjs",
+    "catalogue:import": "tsx scripts/import-srv.ts",
+    "catalogue:sync": "node scripts/sync-srv.cjs",
+    "test:api": "npm run build && node scripts/test-api.cjs",
+    "test:storage": "npm run build && npm test && node scripts/test-storage.cjs",
+    "test:commerce": "npm run build && node scripts/test-commerce.cjs && node scripts/test-payments.cjs && node scripts/test-payment-flow.cjs"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/jwt": "^12.0.3",
+    "@nestjs/platform-express": "^11.1.0",
+    "@nestjs/throttler": "^6.4.0",
+    "@prisma/client": "6.19.0",
+    "bcryptjs": "^3.0.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "dotenv": "^16.4.0",
+    "helmet": "^8.1.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.13",
+    "@electric-sql/pglite-socket": "^0.2.16",
+    "@types/node": "^22.0.0",
+    "cheerio": "^1.1.2",
+    "prisma": "6.19.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "overrides": {
+    "multer": "^2.5.0",
+    "deepmerge-ts": "^8.0.2",
+    "effect": "^3.20.0"
+  }
+}

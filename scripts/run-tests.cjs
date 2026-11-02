@@ -1,0 +1,1 @@
+const fs=require('node:fs');const path=require('node:path');const {spawnSync}=require('node:child_process');const files=fs.readdirSync(path.resolve('.test-build/test')).filter(f=>f.endsWith('.test.js')).map(f=>path.resolve('.test-build/test',f));const run=spawnSync(process.execPath,['--test',...files],{stdio:'inherit'});if(run.error)throw run.error;process.exit(run.status??1);

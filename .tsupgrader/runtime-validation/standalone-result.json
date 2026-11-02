@@ -1,0 +1,175 @@
+{
+  "planHash": "5d49c125108af63fe6f99e3e30672b3aaa146d9c0b5dfff86d78c4b3a85acee0",
+  "phase": "standalone",
+  "recordedAtUtc": "2026-10-31T05:53:07.7834199Z",
+  "retryCount": 3,
+  "resetBaseline": false,
+  "complete": true,
+  "result": {
+    "setupSucceeded": true,
+    "setupDurationMs": 0,
+    "setupFailureOutput": null,
+    "assertions": [
+      {
+        "name": "backend-build",
+        "kind": "process",
+        "verificationMethod": "exit-code",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "\r\n\u003E electrical-backend@0.1.0 build\r\n\u003E tsc -p tsconfig.json\r\n\r\n",
+        "durationMs": 2181
+      },
+      {
+        "name": "tests-pass",
+        "kind": "process",
+        "verificationMethod": "test-results",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "\r\n\u003E electrical-backend@0.1.0 test\r\n\u003E tsc -p tsconfig.test.json \u0026\u0026 node scripts/run-tests.cjs\r\n\r\nTAP version 13\r\n# Subtest: public catalogue strips raw records, wholesale prices and private settings at every projected level\r\nok 1 - public catalogue strips raw records, wholesale prices and private settings at every projected level\r\n  ---\r\n  duration_ms: 1.0732\r\n  type: \u0027test\u0027\r\n  ...\r\n# Subtest: public settings omit secrets, malformed reviews and invalid contact numbers\r\nok 2 - public settings omit secrets, malformed reviews and invalid contact numbers\r\n  ---\r\n  duration_ms: 1.4264\r\n  type: \u0027test\u0027\r\n  ...\r\n# Subtest: public product selection does not expose dealer prices or internal asset IDs\r\nok 3 - public product selection does not expose dealer prices or internal asset IDs\r\n  ---\r\n  duration_ms: 0.1991\r\n  type: \u0027test\u0027\r\n  ...\r\n# Imported SRV catalogue: 112 products; supplier SKUs preserved; GST and inventory counts remain unknown.\r\n# Imported SRV catalogue: 112 products; supplier SKUs preserved; GST and inventory counts remain unknown.\r\n# Subtest: SRV import is idempotent and preserves supplier data without invented tax or inventory\r\nok 4 - SRV import is idempotent and preserves supplier data without invented tax or inventory\r\n  ---\r\n  duration_ms: 36.3091\r\n  type: \u0027test\u0027\r\n  ...\r\n# Subtest: renderable source HTML is stripped of executable elements and event handlers\r\nok 5 - renderable source HTML is stripped of executable elements and event handlers\r\n  ---\r\n  duration_ms: 8.6898\r\n  type: \u0027test\u0027\r\n  ...\r\n1..5\r\n# tests 5\r\n# suites 0\r\n# pass 5\r\n# fail 0\r\n# cancelled 0\r\n# skipped 0\r\n# todo 0\r\n# duration_ms 163.4331\r\n",
+        "durationMs": 1828,
+        "testResults": {
+          "testFramework": "unknown",
+          "runnerDetectedFrom": "none",
+          "testsTotal": 0,
+          "testsPassed": 0,
+          "testsFailed": 0,
+          "testsSkipped": 0,
+          "parseFailed": true
+        }
+      },
+      {
+        "name": "commerce-payment-tests",
+        "kind": "process",
+        "verificationMethod": "exit-code",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "\r\n\u003E electrical-backend@0.1.0 test:commerce\r\n\u003E npm run build \u0026\u0026 node scripts/test-commerce.cjs \u0026\u0026 node scripts/test-payments.cjs \u0026\u0026 node scripts/test-payment-flow.cjs\r\n\r\n\r\n\u003E electrical-backend@0.1.0 build\r\n\u003E tsc -p tsconfig.json\r\n\r\nPASS account registration hashes password and issues a scoped session\r\nPASS duplicate accounts and invalid passwords are rejected\r\nPASS login and protected account profile work\r\nPASS quote ignores client prices and computes GST and shipping on server\r\nPASS unknown inventory and GST cannot be purchased\r\nPASS checkout persists a real order and reserves stock atomically\r\nPASS repeated checkout is idempotent and does not double reserve\r\nPASS tracking requires a valid private token and exact order number\r\nPASS account order history is scoped to its authenticated owner\r\nPASS stock shortage fails without extra orders or reservations\r\nPASS unconfigured online payment and forged signatures are rejected\r\nPASS guest checkout saves a separate order without claiming an account\r\n12 commerce checks passed\r\n3 payment verification checks passed (mock provider; no real payment).\r\nPASS inclusive quote and enabled payment methods\r\nPASS Razorpay order creation and stock reservation\r\nPASS retry resumes the same order without another charge order\r\nPASS invalid payment signature cannot mark an order paid\r\nPASS signature and captured-payment verification\r\nPASS signed webhook validates captured payment idempotently\r\n",
+        "durationMs": 9363
+      },
+      {
+        "name": "api-integration-tests",
+        "kind": "process",
+        "verificationMethod": "exit-code",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "\r\n\u003E electrical-backend@0.1.0 test:api\r\n\u003E npm run build \u0026\u0026 node scripts/test-api.cjs\r\n\r\n\r\n\u003E electrical-backend@0.1.0 build\r\n\u003E tsc -p tsconfig.json\r\n\r\n{\u0022passed\u0022:8,\u0022checks\u0022:[{\u0022name\u0022:\u0022status accurately reports degraded, read-only preview\u0022,\u0022status\u0022:\u0022passed\u0022},{\u0022name\u0022:\u0022health does not claim a PostgreSQL connection\u0022,\u0022status\u0022:\u0022passed\u0022},{\u0022name\u0022:\u0022catalogue preserves all products, options and source provenance\u0022,\u0022status\u0022:\u0022passed\u0022},{\u0022name\u0022:\u0022categories and homepage expose the public catalogue\u0022,\u0022status\u0022:\u0022passed\u0022},{\u0022name\u0022:\u0022allowed storefront origin receives CORS headers\u0022,\u0022status\u0022:\u0022passed\u0022},{\u0022name\u0022:\u0022unknown origin does not receive CORS access\u0022,\u0022status\u0022:\u0022passed\u0022},{\u0022name\u0022:\u0022unfinished order and admin mutations cannot create records\u0022,\u0022status\u0022:\u0022passed\u0022},{\u0022name\u0022:\u0022public API rate limit returns 429 under bounded load\u0022,\u0022status\u0022:\u0022passed\u0022}]}\r\n",
+        "durationMs": 4196
+      },
+      {
+        "name": "health-endpoint-200",
+        "kind": "http-probe",
+        "verificationMethod": "http-status",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": null,
+        "outputSample": "HTTP 200\n{\u0022status\u0022:\u0022ok\u0022,\u0022database\u0022:\u0022connected\u0022}",
+        "durationMs": 15
+      },
+      {
+        "name": "categories-endpoint-200",
+        "kind": "http-probe",
+        "verificationMethod": "http-status",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": null,
+        "outputSample": "HTTP 200\n[{\u0022id\u0022:\u0022293064572970\u0022,\u0022name\u0022:\u0022Accessories\u0022,\u0022slug\u0022:\u0022accessories\u0022,\u0022productIds\u0022:[\u00227558501433386\u0022,\u00227558501597226\u0022,\u00227558501924906\u0022,\u00227572483866666\u0022,\u00227572483407914\u0022,\u00227572482981930\u0022,\u00227558503399466\u0022,\u00227558503366698\u0022,\u00227558503301162\u0022,\u00227558502055978\u0022,\u00227558501990442\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/accessories\u0022},{\u0022id\u0022:\u0022293065130026\u0022,\u0022name\u0022:\u0022Appliances\u0022,\u0022slug\u0022:\u0022appliances\u0022,\u0022productIds\u0022:[\u00227558504316970\u0022,\u00227823727067178\u0022,\u00227558504382506\u0022,\u00227572807122986\u0022,\u00227558504284202\u0022,\u00227572839432234\u0022,\u00227558509756458\u0022,\u00227572798767146\u0022,\u00227572798144554\u0022,\u00227558506217514\u0022,\u00227558506184746\u0022,\u00227558504185898\u0022,\u00227558504153130\u0022,\u00227558504087594\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/appliances\u0022},{\u0022id\u0022:\u0022294182092842\u0022,\u0022name\u0022:\u0022Automatic Changeover\u0022,\u0022slug\u0022:\u0022automatic-changeover\u0022,\u0022productIds\u0022:[\u00227571043319850\u0022,\u00227558505267242\u0022,\u00227558505070634\u0022,\u00227558503071786\u0022,\u00227558503006250\u0022,\u00227558502875178\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/automatic-changeover\u0022},{\u0022id\u0022:\u0022293373149226\u0022,\u0022name\u0022:\u0022Best Sellers\u0022,\u0022slug\u0022:\u0022best-sellers\u0022,\u0022productIds\u0022:[\u00227558504808490\u0022,\u00227558504742954\u0022,\u00227558509756458\u0022,\u00227558510379050\u0022,\u00227558505267242\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/best-sellers\u0022},{\u0022id\u0022:\u0022293065490474\u0022,\u0022name\u0022:\u0022Bus Bar Distribution Box\u0022,\u0022slug\u0022:\u0022bus-bar-distribution-box\u0022,\u0022productIds\u0022:[\u00227822649262122\u0022,\u00227567928885290\u0022,\u00227567927738410\u0022,\u00227567353151530\u0022,\u00227558510739498\u0022,\u00227558511099946\u0022,\u00227558510772266\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/bus-bar-distribution-box\u0022},{\u0022id\u0022:\u0022293064474666\u0022,\u0022name\u0022:\u0022CFL Downlighters\u0022,\u0022slug\u0022:\u0022cfl-downlighters\u0022,\u0022productIds\u0022:[\u00227558500745258\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/cfl-downlighters\u0022},{\u0022id\u0022:\u0022293064507434\u0022,\u0022name\u0022:\u0022CFL Pole Light\u0022,\u0022slug\u0022:\u0022cfl-pole-light\u0022,\u0022productIds\u0022:[\u00227563329962026\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/cfl-pole-light\u0022},{\u0022id\u0022:\u0022293065556010\u0022,\u0022name\u0022:\u0022Change Over Switch\u0022,\u0022slug\u0022:\u0022off-load-change-over-switch\u0022,\u0022productIds\u0022:[\u00227558510608426\u0022,\u00227558510510122\u0022,\u00227558510379050\u0022,\u00227558510346282\u0022,\u00227558510313514\u0022,\u00227558510247978\u0022,\u00227558510116906\u0022,\u00227558505431082\u0022],\u0022image\u0022:\u0022https://cdn.shopify.com/s/files/1/0651/4583/1466/collections/CO400AKNIFETYPE.png?v=1774339606\u0022,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/off-load-change-over-switch\u0022},{\u0022id\u0022:\u0022293065621546\u0022,\u0022name\u0022:\u0022Concealed Box\u0022,\u0022slug\u0022:\u0022concealed-box\u0022,\u0022productIds\u0022:[\u00227564587335722\u0022,\u00227565011615786\u0022,\u00227565007028266\u0022,\u00227564562923562\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/concealed-box\u0022},{\u0022id\u0022:\u0022293065392170\u0022,\u0022name\u0022:\u0022Domestic Water Pump Starter\u0022,\u0022slug\u0022:\u0022domestic-water-pump-starter\u0022,\u0022productIds\u0022:[\u00227558504808490\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/domestic-water-pump-starter\u0022},{\u0022id\u0022:\u0022293369020458\u0022,\u0022name\u0022:\u0022Door Bell\u0022,\u0022slug\u0022:\u0022door-bell\u0022,\u0022productIds\u0022:[\u00227572554809386\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/door-bell\u0022},{\u0022id\u0022:\u0022293065457706\u0022,\u0022name\u0022:\u0022Enshield Block Set\u0022,\u0022slug\u0022:\u0022endshield-block-set\u0022,\u0022productIds\u0022:[\u00227558504841258\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/endshield-block-set\u0022},{\u0022id\u0022:\u0022293065785386\u0022,\u0022name\u0022:\u0022Fan Box\u0022,\u0022slug\u0022:\u0022fan-box\u0022,\u0022productIds\u0022:[\u00227565111132202\u0022,\u00227565096615978\u0022,\u00227565089013802\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/fan-box\u0022},{\u0022id\u0022:\u0022293064867882\u0022,\u0022name\u0022:\u0022Fan Downrod\u0022,\u0022slug\u0022:\u0022fan-downrod\u0022,\u0022productIds\u0022:[\u00227566246936618\u0022,\u00227558503268394\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/fan-downrod\u0022},{\u0022id\u0022:\u0022293373509674\u0022,\u0022name\u0022:\u0022Featured Products\u0022,\u0022slug\u0022:\u0022featured-products\u0022,\u0022productIds\u0022:[\u00227558503563306\u0022,\u00227558503628842\u0022,\u00227565096615978\u0022,\u00227558504153130\u0022,\u00227558504087594\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/featured-products\u0022},{\u0022id\u0022:\u0022293064802346\u0022,\u0022name\u0022:\u0022Junction Box\u0022,\u0022slug\u0022:\u0022junction-box\u0022,\u0022productIds\u0022:[\u00227558505693226\u0022,\u00227558503170090\u0022],\u0022image\u0022:null,\u0022sourceUrl\u0022:\u0022https://srvelectricals.com/collections/junction-box\u0022},{\u0022id\u0022:\u0022293065916458\u0022,\u0022name\u0022:\u0022Kitkat Fuses\u0022,\u0022slug\u0022:\u0022domestic-kitkat-fuses\u0022,\u0022productIds\u0022:[\u00227558505857066\u0022,\u00227568340516906\u0022,\u00227\n\u2026[truncated]",
+        "durationMs": 67
+      }
+    ],
+    "executions": [
+      {
+        "source": "backend-build",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\npm.CMD",
+        "args": [
+          "run",
+          "build"
+        ],
+        "cwd": "C:\\Users\\rajku\\OneDrive\\Desktop\\electrical-backend",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "tests-pass",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\npm.CMD",
+        "args": [
+          "test"
+        ],
+        "cwd": "C:\\Users\\rajku\\OneDrive\\Desktop\\electrical-backend",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "commerce-payment-tests",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\npm.CMD",
+        "args": [
+          "run",
+          "test:commerce"
+        ],
+        "cwd": "C:\\Users\\rajku\\OneDrive\\Desktop\\electrical-backend",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "api-integration-tests",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\npm.CMD",
+        "args": [
+          "run",
+          "test:api"
+        ],
+        "cwd": "C:\\Users\\rajku\\OneDrive\\Desktop\\electrical-backend",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "health-endpoint-200",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\npm.CMD",
+        "args": [
+          "run",
+          "start"
+        ],
+        "cwd": "C:\\Users\\rajku\\OneDrive\\Desktop\\electrical-backend",
+        "env": {
+          "PORT": "4002",
+          "HOST": "127.0.0.1"
+        },
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "categories-endpoint-200",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\npm.CMD",
+        "args": [
+          "run",
+          "start"
+        ],
+        "cwd": "C:\\Users\\rajku\\OneDrive\\Desktop\\electrical-backend",
+        "env": {
+          "PORT": "4002",
+          "HOST": "127.0.0.1"
+        },
+        "prependPath": [],
+        "platform": "win32"
+      }
+    ]
+  }
+}
